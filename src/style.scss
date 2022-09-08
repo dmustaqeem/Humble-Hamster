@@ -1,0 +1,771 @@
+body { 
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+canvas{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right:0;
+}
+section
+{
+  height: 100vh;
+}
+
+#labels {
+    position: absolute;  /* let us position ourself inside the container */
+    left: 0;             /* make our position the top left of the container */
+    top: 0;
+    color: white;
+}
+
+#MainImage {
+  display: block;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button
+{
+    position: absolute
+}
+
+
+.backButton
+{
+  position: absolute; 
+  width:70px;
+  height:30px;
+  text-align: center;
+  margin-left: 5%;
+  margin-top: 5%;
+  cursor: pointer;
+  color: white;
+}
+.backButton:hover {
+  border-bottom: 1px solid white;
+  transition: all .5s ease-in-out;
+}
+
+
+.progress-bar {
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  background: #af71af;
+}
+
+.done {
+  top: 0;
+  height: 100%;
+  width: 100%;
+  transition: all .33s ease;
+}
+
+.count {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  font-weight: 100;
+  font-size: 3em;
+  margin-top: -1.33em;
+  color: #af71af;
+}
+
+
+  .overlay1 {
+    position: absolute; 
+    top: 50px; 
+    width: 90%;
+    left: 70px;
+    height: 50px;
+    opacity:1;
+    padding: 20px;
+    color: rgb(228, 224, 224);
+    font-size: 15px;
+    padding: 20px;
+    text-align: left;
+  }
+
+  .overlay2 {
+    position: absolute; 
+    width: 100%;
+    height: 100%;
+    /* top: 150px; 
+    left: 160px;
+    opacity:1;
+    padding: 20px; */
+    color: rgb(228, 224, 224);
+    font-size: 15px;
+  }
+
+  .overlayMainImage {
+    position: absolute; 
+    width: 100%;
+    height: 100%;
+    color: rgb(228, 224, 224);
+    font-size: 15px;
+    background-color: #24779F;
+
+    opacity: 1;
+    visibility: visible;
+    cursor: pointer;
+    -moz-transition: opacity 500ms linear, visibility 0s linear;
+    -o-transition: opacity 500ms linear, visibility 0s linear;
+    -webkit-transition: opacity 500ms linear, visibility 0s linear;
+    transition: opacity 500ms linear, visibility 0s linear;
+  }
+
+  .overlayMainImage--hidden {
+
+    opacity: 0;
+    visibility: hidden;
+    -moz-transition: opacity 500ms linear, visibility 0s linear 500ms;
+    -o-transition: opacity 500ms linear, visibility 0s linear 500ms;
+    -webkit-transition: opacity 500ms linear, visibility 0s linear;
+    -webkit-transition-delay: 0s, 500ms;
+    transition: opacity 500ms linear, visibility 0s linear 500ms;
+    
+  }
+
+  .overlayMainImage--close {
+    position: absolute; 
+    width: 100%;
+    height: 100%;
+    color: rgb(228, 224, 224);
+    font-size: 15px;
+    background-color: #24779F;
+
+    opacity: 0;
+    visibility: hidden;
+    -moz-transition: opacity 500ms linear, visibility 0s linear 500ms;
+    -o-transition: opacity 500ms linear, visibility 0s linear 500ms;
+    -webkit-transition: opacity 500ms linear, visibility 0s linear;
+    -webkit-transition-delay: 0s, 500ms;
+    transition: opacity 500ms linear, visibility 0s linear 500ms;
+  }
+
+  .LoadingImageDiv {
+    position: absolute; 
+    width: 500px;
+    height: 500px;
+    top: 20%; 
+    left: 30%;
+    opacity:1;
+    color: rgb(228, 224, 224);
+    font-size: 15px;
+  }
+
+
+  .LoadingParaDiv {
+    position: absolute; 
+    width: 1000px;
+    height: 150px;
+    top: 40%; 
+    left: 15%;
+    // color: rgb(228, 224, 224);
+    font-size: 30px;
+    opacity: 0;
+    text-align: center;
+    visibility: hidden;
+    -moz-transition: opacity 500ms linear, visibility 0s linear 500ms;
+    -o-transition: opacity 500ms linear, visibility 0s linear 500ms;
+    -webkit-transition: opacity 500ms linear, visibility 0s linear;
+    -webkit-transition-delay: 0s, 500ms;
+    transition: opacity 500ms linear, visibility 0s linear 500ms;
+  }
+  .LoadingParaDiv--show {
+   
+  opacity: 1;
+  visibility: visible;
+  cursor: pointer;
+  -moz-transition: opacity 500ms linear, visibility 0s linear;
+  -o-transition: opacity 500ms linear, visibility 0s linear;
+  -webkit-transition: opacity 500ms linear, visibility 0s linear;
+  transition: opacity 500ms linear, visibility 0s linear;
+
+  }
+
+  .LoadingParaDiv--hide {
+   
+    opacity: 0;
+    visibility: hidden;
+    -moz-transition: opacity 500ms linear, visibility 0s linear 500ms;
+    -o-transition: opacity 500ms linear, visibility 0s linear 500ms;
+    -webkit-transition: opacity 500ms linear, visibility 0s linear;
+    -webkit-transition-delay: 0s, 500ms;
+    transition: opacity 500ms linear, visibility 0s linear 500ms;
+  
+    }
+  
+  
+  .overlay3 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    /* cursor: pointer; */
+  }
+
+  .navbar1
+  {
+    position: absolute; 
+    width:70px;
+    height:30px;
+    text-align: center;
+    margin-left: 50%;
+    margin-top: 10%;
+    margin-right: 50%;
+    cursor: pointer;
+    color: white;
+  }
+
+  .navbar1:hover {
+    border-bottom: 1px solid white;
+    transition: all .5s ease-in-out;
+  }
+
+  .navbar2
+  {
+    position: absolute; 
+    width:80px;
+    height:30px;
+    text-align: center;
+    margin-left: 50%;
+    margin-top: 15%;
+    margin-right: 50%;
+    cursor: pointer;
+    color: white;
+  }
+
+  .navbar2:hover {
+    border-bottom: 1px solid white;
+    transition: all .5s ease-in-out;
+  }
+
+  .navbar3
+  {
+    position: absolute; 
+    width:100px;
+    height:30px;
+    text-align: center;
+    margin-left: 49.5%;
+    margin-top: 20%;
+    cursor: pointer;
+    color: white;
+  }
+
+  .navbar3:hover {
+    border-bottom: 1px solid white;
+    transition: all .5s ease-in-out;
+  }
+
+  .navbar4
+  {
+    position: absolute; 
+    width:150px;
+    height:30px;
+    text-align: center;
+    margin-left: 48%;
+    margin-top: 25%;
+    cursor: pointer;
+    color: white;
+  }
+
+  .navbar4:hover {
+    border-bottom: 1px solid white;
+    transition: all .5s ease-in-out;
+  }
+/* Home Page Image  */
+  .navbar5
+  {
+    position: absolute; 
+    width:150px;
+    height:60px;
+  } 
+  /* Hamburger Menu */
+  .navbar6
+  {
+    position: absolute; 
+    width:2.5%;
+    height:30%;
+    margin-left: 90%;
+    cursor: pointer;
+  }
+
+  .navbar6:hover {
+    border-bottom: 1px solid white;
+    transition: all .5s ease-in-out;
+  }
+
+
+
+  /* Navbar Inner Elements Header */
+  .navbarInnerHeader
+  {
+    position: absolute; 
+    width:350px;
+    height:70px;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 10%;
+    cursor: pointer;
+    color: aliceblue;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+  /* Navbar inner elements paragraph */
+  .container{
+    position: absolute; 
+    width: 60%;
+    margin-left: 17%;
+    margin-top: 17%;
+    padding: 2rem;
+    text-align: justify;
+    transition: all 0.3s;
+    color: aliceblue;
+  }
+  .container p{
+      line-height: 1.5;
+      letter-spacing: 0.3px;
+      word-spacing: 2px;
+  }
+
+  .container p:first-child::first-letter{
+      color:#FE5F55;
+      font-weight: bold;
+      font-size: 70px;
+      float: left;
+      line-height: 60px;
+      padding-right: 8px;
+      margin-top: -3px;
+  }
+  
+  /* Sphere Menu  */
+
+  .circular-menu {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+  }
+  
+  .circular-menu .floating-btn {
+    display: block;
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 50%;
+    background-color: hsl(4, 98%, 60%);
+    box-shadow: 0 2px 5px 0 hsla(0, 0%, 0%, .26);  
+    color: hsl(0, 0%, 100%);
+    text-align: center;
+    line-height: 3.9;
+    cursor: pointer;
+    outline: 0;
+  }
+  
+  .circular-menu.active .floating-btn {
+    box-shadow: inset 0 0 3px hsla(0, 0%, 0%, .3);
+  }
+  
+  .circular-menu .floating-btn:active {
+    box-shadow: 0 4px 8px 0 hsla(0, 0%, 0%, .4);
+  }
+  
+  .circular-menu .floating-btn i {
+    font-size: 1.3em;
+    transition: transform .2s;  
+  }
+  
+  .circular-menu.active .floating-btn i {
+    transform: rotate(-45deg);
+  }
+  
+  .circular-menu:after {
+    display: block;
+    content: ' ';
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -2;
+    background-color: hsl(4, 98%, 60%);
+    transition: all .3s ease;
+  }
+  
+  .circular-menu.active:after {
+    transform: scale3d(5.5, 5.5, 1);
+    transition-timing-function: cubic-bezier(.68, 1.55, .265, 1);
+  }
+  
+  .circular-menu .items-wrapper {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .circular-menu .menu-item {
+    position: absolute;
+    top: .2em;
+    right: .2em;
+    z-index: -1;
+    display: block;
+    text-decoration: none;
+    color: hsl(0, 0%, 100%);
+    font-size: 1em;
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 3;
+    background-color: hsla(0,0%,0%,.1);
+    transition: transform .3s ease, background .2s ease;
+  }
+  
+  .circular-menu .menu-item:hover {
+    background-color: hsla(0,0%,0%,.3);
+  }
+  
+  .circular-menu.active .menu-item {
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .circular-menu.active .menu-item:nth-child(1) {
+    transform: translate3d(1em,-7em,0);
+  }
+  
+  .circular-menu.active .menu-item:nth-child(2) {
+    transform: translate3d(-3.5em,-6.3em,0);
+  }
+  
+  .circular-menu.active .menu-item:nth-child(3) {
+    transform: translate3d(-6.5em,-3.2em,0);
+  }
+  
+  .circular-menu.active .menu-item:nth-child(4) {
+    transform: translate3d(-7em,1em,0);
+  }
+  
+  /**
+   * The other theme for this menu
+   */
+  
+  .circular-menu.circular-menu-left {
+    right: auto; 
+    left: 1em;
+  }
+  
+  .circular-menu.circular-menu-left .floating-btn {
+    background-color: hsl(217, 89%, 61%);
+  }
+  
+  .circular-menu.circular-menu-left:after {
+    background-color: hsl(217, 89%, 61%);
+  }
+  
+  .circular-menu.circular-menu-left.active .floating-btn i {
+    transform: rotate(90deg);
+  }
+  
+  .circular-menu.circular-menu-left.active .menu-item:nth-child(1) {
+    transform: translate3d(-1em,-7em,0);
+  }
+  
+  .circular-menu.circular-menu-left.active .menu-item:nth-child(2) {
+    transform: translate3d(3.5em,-6.3em,0);
+  }
+  
+  .circular-menu.circular-menu-left.active .menu-item:nth-child(3) {
+    transform: translate3d(6.5em,-3.2em,0);
+  }
+  
+  .circular-menu.circular-menu-left.active .menu-item:nth-child(4) {
+    transform: translate3d(7em,1em,0);
+  }
+
+  .overlay4 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0);
+    /* cursor: pointer; */
+  }
+  .progress {
+    background: rgba(0, 0, 0, 0.1);
+    justify-content: flex-start;
+    border-radius: 100px;
+    align-items: center;
+    position: absolute;
+    padding: 0 5px;
+    display: flex;
+    height: 40px;
+    width: 500px;
+    top:40%;
+    left: 35%;
+  }
+
+  .progress-value {
+    animation: load 10s normal forwards;
+    box-shadow: 0 10px 40px -10px #fff;
+    border-radius: 100px;
+    background: #fff;
+    height: 30px;
+    width: 0;
+  }
+  
+  @keyframes load {
+    0% { width: 0; }
+    100% { width: 100%; }
+  }
+
+
+  @media only screen and (max-width: 1300px) {
+    .overlay1 {
+      top: 50px; 
+      width: 90%;
+      height: 50px;
+      left: 30px;
+    }
+
+    .overlayMainImage {
+      position: absolute; 
+      width: 100%;
+      height: 100%;
+      color: rgb(228, 224, 224);
+      font-size: 15px;
+      background-color: #24779F;
+  
+      opacity: 1;
+      visibility: visible;
+      cursor: pointer;
+      -moz-transition: opacity 500ms linear, visibility 0s linear;
+      -o-transition: opacity 500ms linear, visibility 0s linear;
+      -webkit-transition: opacity 500ms linear, visibility 0s linear;
+      transition: opacity 500ms linear, visibility 0s linear;
+    }
+  
+    .overlayMainImage--hidden {
+  
+      opacity: 0;
+      visibility: hidden;
+      -moz-transition: opacity 500ms linear, visibility 0s linear 500ms;
+      -o-transition: opacity 500ms linear, visibility 0s linear 500ms;
+      -webkit-transition: opacity 500ms linear, visibility 0s linear;
+      -webkit-transition-delay: 0s, 500ms;
+      transition: opacity 500ms linear, visibility 0s linear 500ms;
+      
+    }
+  
+    .overlayMainImage--close {
+      position: absolute; 
+      width: 100%;
+      height: 100%;
+      color: rgb(228, 224, 224);
+      font-size: 15px;
+      background-color: #24779F;
+  
+      opacity: 0;
+      visibility: hidden;
+      -moz-transition: opacity 500ms linear, visibility 0s linear 500ms;
+      -o-transition: opacity 500ms linear, visibility 0s linear 500ms;
+      -webkit-transition: opacity 500ms linear, visibility 0s linear;
+      -webkit-transition-delay: 0s, 500ms;
+      transition: opacity 500ms linear, visibility 0s linear 500ms;
+    }
+  
+    .LoadingImageDiv {
+      position: absolute; 
+      width: 500px;
+      height: 500px;
+      top: 20%; 
+      left: 30%;
+      opacity:1;
+      color: rgb(228, 224, 224);
+      font-size: 15px;
+    }
+  
+  
+    .LoadingParaDiv {
+      position: absolute; 
+      width: 1000px;
+      height: 150px;
+      top: 40%; 
+      left: 15%;
+      // color: rgb(228, 224, 224);
+      font-size: 30px;
+      opacity: 0;
+      text-align: center;
+      visibility: hidden;
+      -moz-transition: opacity 500ms linear, visibility 0s linear 500ms;
+      -o-transition: opacity 500ms linear, visibility 0s linear 500ms;
+      -webkit-transition: opacity 500ms linear, visibility 0s linear;
+      -webkit-transition-delay: 0s, 500ms;
+      transition: opacity 500ms linear, visibility 0s linear 500ms;
+    }
+    .LoadingParaDiv--show {
+     
+    opacity: 1;
+    visibility: visible;
+    cursor: pointer;
+    -moz-transition: opacity 500ms linear, visibility 0s linear;
+    -o-transition: opacity 500ms linear, visibility 0s linear;
+    -webkit-transition: opacity 500ms linear, visibility 0s linear;
+    transition: opacity 500ms linear, visibility 0s linear;
+  
+    }
+  
+    .LoadingParaDiv--hide {
+     
+      opacity: 0;
+      visibility: hidden;
+      -moz-transition: opacity 500ms linear, visibility 0s linear 500ms;
+      -o-transition: opacity 500ms linear, visibility 0s linear 500ms;
+      -webkit-transition: opacity 500ms linear, visibility 0s linear;
+      -webkit-transition-delay: 0s, 500ms;
+      transition: opacity 500ms linear, visibility 0s linear 500ms;
+    
+      }
+    
+    
+    .navbar5
+    {
+      width:150px;
+      height:120px;
+    } 
+    .navbar6
+  {
+    width:2.5%;
+    height:30%;
+    margin-left: 80%;
+    font-size: 30px;
+  }
+  .backButton
+  {
+    position: absolute; 
+    width:90px;
+    height:50px;
+    text-align: center;
+    margin-left: 10%;
+    margin-top: 10%;
+    font-size: 30px;
+  }
+  .navbar1
+  {
+    width:90px;
+    height:50px;
+    margin-left: 10%;
+    margin-top: 50%;
+    font-size: 30px;
+  }
+  .navbar2
+  {
+    width:150px;
+    height:50px;
+    margin-left: 10%;
+    margin-top: 65%;
+    font-size: 30px;
+  }
+
+  .navbar3
+  {
+    width:180px;
+    height:50px;
+    margin-left: 10%;
+    margin-top: 80%;
+    font-size: 30px;
+  }
+
+  .navbar4
+  {
+    width:250px;
+    height:90px;
+    margin-left: 9%;
+    margin-top: 95%;
+    font-size: 30px;
+  }
+  .navbarInnerHeader {
+    margin-left: 30%;
+    margin-top: 35%;
+  }
+  .container {
+    width:80%;
+    margin-left: 7%;
+    margin-top: 60%;
+    font-size: 30px;
+  }
+
+  .LoadingParaDiv {
+    position: absolute; 
+    width: 96%;
+    height: 350px;
+    top: 450px; 
+    left: 20px;
+    font-size: 50px;
+    opacity: 0;
+    text-align: center;
+    visibility: hidden;
+    -moz-transition: opacity 500ms linear, visibility 0s linear 500ms;
+    -o-transition: opacity 500ms linear, visibility 0s linear 500ms;
+    -webkit-transition: opacity 500ms linear, visibility 0s linear;
+    -webkit-transition-delay: 0s, 500ms;
+    transition: opacity 500ms linear, visibility 0s linear 500ms;
+  }
+  .LoadingParaDiv--show {
+   
+  opacity: 1;
+  visibility: visible;
+  cursor: pointer;
+  -moz-transition: opacity 500ms linear, visibility 0s linear;
+  -o-transition: opacity 500ms linear, visibility 0s linear;
+  -webkit-transition: opacity 500ms linear, visibility 0s linear;
+  transition: opacity 500ms linear, visibility 0s linear;
+
+  }
+
+  .LoadingParaDiv--hide {
+   
+    opacity: 0;
+    visibility: hidden;
+    -moz-transition: opacity 500ms linear, visibility 0s linear 500ms;
+    -o-transition: opacity 500ms linear, visibility 0s linear 500ms;
+    -webkit-transition: opacity 500ms linear, visibility 0s linear;
+    -webkit-transition-delay: 0s, 500ms;
+    transition: opacity 500ms linear, visibility 0s linear 500ms;
+  
+    }
+
+  .progress {
+    background: rgba(0, 0, 0, 0.1);
+    justify-content: flex-start;
+    border-radius: 100px;
+    align-items: center;
+    position: absolute;
+    padding: 0 5px;
+    display: flex;
+    height: 40px;
+    width: 500px;
+    top:50%;
+    left: 25%;
+  }
+
+  .progress-value {
+    animation: load 30s normal forwards;
+    box-shadow: 0 10px 40px -10px #fff;
+    border-radius: 100px;
+    background: #fff;
+    height: 30px;
+    width: 0;
+  }
+  
+  @keyframes load {
+    0% { width: 0; }
+    100% { width: 100%; }
+  }
+    
+  }
